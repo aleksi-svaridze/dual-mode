@@ -16,6 +16,19 @@ function loadTheme(theme){
   root.setAttribute('color-scheme', `${theme}`);
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+    let theme = getCurrentTheme();
+
+    if(theme === 'dark'){
+        theme = 'light';
+    } else {
+        theme = 'dark';
+    }
+
+    localStorage.setItem('website.theme', `${theme}`);
+    loadTheme(theme);
+})
+
 btn.addEventListener('click', () => {
   let theme = getCurrentTheme();
   if(theme === 'dark'){
@@ -28,15 +41,3 @@ btn.addEventListener('click', () => {
   loadTheme(theme);
 })
 
-window.addEventListener('DOMContentLoaded', () => {
-    let theme = getCurrentTheme();
-    if(theme === 'dark'){
-        theme = 'light';
-    } else {
-        theme = 'dark';
-    }
-
-    localStorage.setItem('website.theme', `${theme}`);
-    loadTheme(theme);
-//   loadTheme(getCurrentTheme());
-})
